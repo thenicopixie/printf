@@ -61,7 +61,6 @@ int _printf(const char *format, ...)
 	va_list santa;
 	int i = 0;
 	char *s;
-	int flag = 0;
 
 	va_start(santa, format);
 	while (format[i])
@@ -73,48 +72,35 @@ int _printf(const char *format, ...)
 				i++;	
 				case 'c':
 					_putchar(va_arg(santa, int));
-					flag = 1;
 					i++;
 					break;
 				case 'i':
 					_putchar(va_arg(santa, int));
-					flag = 1;
 					break;
 				case 'f':
 					printf("%f", (float) va_arg(santa, double));
-					flag = 1;
 					break;
 				case 's':
 					s = va_arg(santa, char *);
 					if (s == NULL)
 					{
 						printf("(nil)");
-						flag = 1;
 						break;
 					}
 					printf("%s", s);
-					flag = 1;
 					break;
 				case 'd':
-					
-					flag = 1;
 					break;
 				case '%':
 					_putchar(va_arg(santa, int));
-					flag = 1;
 					break;
 				case 'b':
-					flag = 1;
 					break;
 				default:
 					_putchar('%');
-					flag = 1;
 					break;
 			}
-			if (format[i + 1] != 0 && flag == 1)
-				printf(", ");
 			i++;
-			flag = 0;
 		}
 		else
 		{
