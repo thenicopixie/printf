@@ -6,6 +6,9 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+/**
+ * _printf - print string to standard output
+ */
 int _printf(const char *format, ...);
 
 #endif
