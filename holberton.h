@@ -11,4 +11,6 @@
  */
 int _printf(const char *format, ...);
 
+#pragma GCC diagnostic ignored "-Wuninitialized"
+
 #endif
