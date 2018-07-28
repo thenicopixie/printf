@@ -106,7 +106,11 @@ int _printf(const char *format, ...)
 				case 'b':
 					flag = 1;
 					break;
-				}
+				default:
+					_putchar('%');
+					flag = 1;
+					break;
+			}
 			if (format[i + 1] != 0 && flag == 1)
 				printf(", ");
 			i++;
