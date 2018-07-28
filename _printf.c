@@ -90,6 +90,8 @@ int _printf(const char *format, ...)
 					printf("%s", s);
 					break;
 				case 'd':
+					print_number(va_arg(santa, int));
+					i++;
 					break;
 				case '%':
 					_putchar(va_arg(santa, int));
