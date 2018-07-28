@@ -50,10 +50,10 @@ int _strlen(char *s)
 
 /**
 * _printf - our own printf function
-* @format: NICLE GOT THIS PART
+* @format: A character string, composed of zero of more directives
 *
-* Description: NICOLEEEE
-* Return: an int. the character length.
+* Description: Writes a formatted string to the standard output
+* Return: an integer. The number of characters printed excluding the null byte
 */
 
 int _printf(const char *format, ...)
