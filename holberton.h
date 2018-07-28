@@ -8,7 +8,8 @@
 #include <unistd.h>
 /**
  * _printf - print string to standard output
+ * print_number - print digits from number
  */
 int _printf(const char *format, ...);
-
+void print_number(int n);
 #endif
