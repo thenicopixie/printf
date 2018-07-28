@@ -10,6 +10,7 @@
  * _printf - print string to standard output
  * print_number - print digits from number
  */
+char _putchar(char c);
 int _printf(const char *format, ...);
 void print_number(int n);
 
