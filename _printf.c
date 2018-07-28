@@ -66,38 +66,58 @@ int _printf(const char *format, ...)
 	va_start(santa, format);
 	while (format[i])
 	{
-		switch (format[i])
+		if(*(format + i) == '%' && (format[i + 1]))
 		{
-			case 'c':
-				printf("%c", (char)  va_arg(santa, int));
-				flag = 1;
-				break;
-			case 'i':
-				printf("%i", va_arg(santa, int));
-				flag = 1;
-				break;
-			case 'f':
-				printf("%f", (float) va_arg(santa, double));
-				flag = 1;
-				break;
-			case 's':
-				s = va_arg(santa, char *);
-				if (s == NULL)
-				{
-					printf("(nil)");
+			switch (format[i + 1])
+			{
+				i++;	
+				case 'c':
+					_putchar(va_arg(santa, int));
+					flag = 1;
+					i++;
+					break;
+				case 'i':
+					_putchar(va_arg(santa, int));
+					flag = 1;
+					break;
+				case 'f':
+					printf("%f", (float) va_arg(santa, double));
+					flag = 1;
+					break;
+				case 's':
+					s = va_arg(santa, char *);
+					if (s == NULL)
+					{
+						printf("(nil)");
+						flag = 1;
+						break;
+					}
+					printf("%s", s);
+					flag = 1;
+					break;
+				case 'd':
+					
+					flag = 1;
+					break;
+				case '%':
+					_putchar(va_arg(santa, int));
+					flag = 1;
+					break;
+				case 'b':
 					flag = 1;
 					break;
 				}
-				printf("%s", s);
-				flag = 1;
-				break;
+			if (format[i + 1] != 0 && flag == 1)
+				printf(", ");
+			i++;
+			flag = 0;
 		}
-		if (format[i + 1] != 0 && flag == 1)
-			printf(", ");
-		i++;
-		flag = 0;
+		else
+		{
+			_putchar(format[i]);
+			i++;
+		}
 	}
 	va_end(santa);
-	printf("\n");
-}
+	_putchar('\n');
 }
