@@ -8,9 +8,9 @@
 #include <unistd.h>
 /**
  * _printf - print string to standard output
+ * print_number - print digits from number
  */
 int _printf(const char *format, ...);
-
-#pragma GCC diagnostic ignored "-Wuninitialized"
+void print_number(int n);
 
 #endif
