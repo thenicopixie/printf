@@ -1,52 +1,6 @@
 #include "holberton.h"
+#include <stdio.h>
 
-/**
-* _putchar - prints one character
-* @c: a character passed by some function
-*
-* Description: loop through and use this to print a whole thingy
-* Return: a character to the standard output.
-*/
-
-char _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
-* _strcpy - copies all the chars including null term
-* @dest: pointer to wehere you want the string copied to
-* @src: the source of the string you want to be copied
-*
-* Description: Copies the string over so we can do stuff
-* Return: Returns the copied over string
-*/
-
-char * _strcpy(char *dest, char *src)
-{
-	int i = 0;
-
-	while (dest[i] = src[i] != '\0')
-		i++;
-	return (dest);
-}	
-
-/**
-* _strlen - counts how many chars excluding null
-* @s: the string passed to us
-*
-* Description: Counts the number of chars until null char
-* Return: the string length
-*/
-
-int _strlen(char *s)
-{
-	int i = 0;
-	if (s)
-		while (s[i])
-			i++;
-	return (i);
-}
 
 /**
 * _printf - our own printf function
@@ -58,12 +12,12 @@ int _strlen(char *s)
 
 int _printf(const char *format, ...)
 {
-	va_list santa;
-	int i = 0;
+	va_list argu;
+	int i = 0, count = 0;
 	char *s;
 
-	va_start(santa, format);
-	while (format[i])
+	va_start(argu, format);
+	while (format && format[i])
 	{
 		if(*(format + i) == '%' && (format[i + 1]))
 		{
@@ -71,36 +25,43 @@ int _printf(const char *format, ...)
 			{
 				i++;	
 				case 'c':
-					_putchar(va_arg(santa, int));
+					_putchar(va_arg(argu, int));
 					i++;
+					count++;
 					break;
 				case 'i':
-					print_number(va_arg(santa, int));
+					print_number(va_arg(argu, int));
 					i++;
+					count++;
 					break;
 				case 'f':
-					printf("%f", (float) va_arg(santa, double));
+					printf("%f", (float) va_arg(argu, double));
 					break;
 				case 's':
-					s = va_arg(santa, char *);
+					s = va_arg(argu,  char *);
 					if (s == NULL)
 					{
 						printf("(nil)");
 						break;
 					}
-					printf("%s", s);
+					write(1, s, _strlen(s));
+					i++;
+					count += _strlen(s);
 					break;
 				case 'd':
-					print_number(va_arg(santa, int));
+					print_number(va_arg(argu, int));
 					i++;
+					count++;
 					break;
 				case '%':
-					_putchar(va_arg(santa, int));
+					write(1, &format[i], 1);
+					i++;
 					break;
 				case 'b':
 					break;
 				default:
-					_putchar('%');
+					write(1, &format[i], 1);
+					i++;
 					break;
 			}
 			i++;
@@ -111,6 +72,28 @@ int _printf(const char *format, ...)
 			i++;
 		}
 	}
-	va_end(santa);
+	va_end(argu);
 	_putchar('\n');
+	printf("number of characters printed: %i\n", count);
+	return (0);
+}
+
+int main(void)
+{
+	char a = 'a';
+
+	printf("printf - this is a char: %c\n", a);
+	_printf("our _printf - this is a char: %c\n", a);
+	printf("printf - this is a string: %s \n", "hello");
+        _printf("our _printf - this is a string: %s \n", "hello");
+        printf("printf - this is a int: %i\n", 34);
+        _printf("our _printf -this is a int: %i\n", 34);
+	 printf("printf - this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
+        _printf("our _printf - this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
+	printf("printf - check for 2 mods %% \n");
+	_printf("our _printf - check for 2 mods %% \n");
+	printf("printf - test one mod: %z \n");
+	_printf("our _printf - test one mod: %z \n");
+	
+	return (0);
 }
