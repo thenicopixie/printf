@@ -1,4 +1,7 @@
 #include "holberton.h"
+#include <stdio.h>
+
+
 /**
 * _printf - our own printf function
 * @format: A character string, composed of zero of more directives
@@ -9,11 +12,11 @@
 
 int _printf(const char *format, ...)
 {
-	va_list santa;
+	va_list argu;
 	int i = 0, count = 0;
 	char *s;
 
-	va_start(santa, format);
+	va_start(argu, format);
 	while (format && format[i])
 	{
 		if(*(format + i) == '%' && (format[i + 1]))
@@ -22,41 +25,42 @@ int _printf(const char *format, ...)
 			{
 				i++;	
 				case 'c':
-					_putchar(va_arg(santa, int));
+					_putchar(va_arg(argu, int));
 					i++;
 					count++;
 					break;
 				case 'i':
-					print_number(va_arg(santa, int));
+					print_number(va_arg(argu, int));
 					i++;
 					count++;
 					break;
 				case 'f':
-					printf("%f", (float) va_arg(santa, double));
+					printf("%f", (float) va_arg(argu, double));
 					break;
 				case 's':
-					s = va_arg(santa, char *);
+					s = va_arg(argu,  char *);
 					if (s == NULL)
 					{
 						printf("(nil)");
 						break;
 					}
-					write(1, s, va_arg(santa, double));
+					write(1, s, _strlen(s));
+					i++;
 					count += _strlen(s);
 					break;
 				case 'd':
-					print_number(va_arg(santa, int));
+					print_number(va_arg(argu, int));
 					i++;
 					count++;
 					break;
 				case '%':
-					write(1, &format[i], _strlen(s));
+					write(1, &format[i], 1);
 					i++;
-					count++;
+					break;
+				case 'b':
 					break;
 				default:
-					_putchar('%');
-					count++;
+					write(1, &format[i], 1);
 					i++;
 					break;
 			}
@@ -68,20 +72,28 @@ int _printf(const char *format, ...)
 			i++;
 		}
 	}
-	va_end(santa);
+	va_end(argu);
 	_putchar('\n');
-	printf("%i\n", count);
+	printf("number of characters printed: %i\n", count);
 	return (0);
 }
+
 int main(void)
 {
-	printf("char: %c\n", "c");
-	_printf("char: %c\n", "c");
-        printf("string: %s\n", "string");
-        _printf("string: %s\n", "string");
-        printf("int: %i\n", 34, -34);
-        _printf("int: %i\n", 34, -34);
-        printf("decimal: %d %d\n", 22, 2+2);
-        _printf("decimal: %d %d\n", 22, 2+2);
+	char a = 'a';
+
+	printf("this is a char: %c\n", a);
+	_printf("this is a char: %c\n", a);
+	printf("this is a string: %s \n", "hello");
+        _printf("this is a string: %s \n", "hello");
+        printf("this is a int: %i\n", 34);
+        _printf("this is a int: %i\n", 34);
+	 printf("this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
+        _printf("this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
+	printf("whoops %% \n");
+	_printf("whoops %% \n");
+	printf("test one mod: %z \n");
+	_printf("test one mod: %z \n");
+	
 	return (0);
 }
