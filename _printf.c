@@ -76,6 +76,7 @@ int _printf(const char *format, ...)
 					break;
 				case 'i':
 					_putchar(va_arg(santa, int));
+					i++;
 					break;
 				case 'f':
 					printf("%f", (float) va_arg(santa, double));
