@@ -63,7 +63,7 @@ int _printf(const char *format, ...)
 	char *s;
 
 	va_start(santa, format);
-	while (format[i])
+	while (format && format[i])
 	{
 		if(*(format + i) == '%' && (format[i + 1]))
 		{
