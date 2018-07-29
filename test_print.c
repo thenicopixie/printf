@@ -124,7 +124,7 @@ int _printf(const char *format, ...)
 					i++;
 					break;
 				case '%':
-					_putchar(va_arg(argu, int));
+					write(1, &format[i], 1);
 					i++;
 					break;
 				case 'b':
@@ -153,9 +153,12 @@ int main(void)
         _printf("this is a string: %s \n", "hello");
         printf("this is a int: %i\n", 34);
         _printf("this is a int: %i\n", 34);
-	 printf("this is a digit: %d, and so is this: %d\n", 455, -455);
-        _printf("this is a digit: %d, and so is this: %d\n", 455, -455);
+	 printf("this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
+        _printf("this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
 	printf("whoops %% \n");
 	_printf("whoops %% \n");
+	printf("test one mod: %z \n");
+	_printf("test one mod: %z \n");
+	
 	return (0);
 }
