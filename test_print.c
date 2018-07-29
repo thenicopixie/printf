@@ -129,6 +129,10 @@ int _printf(const char *format, ...)
 					break;
 				case 'b':
 					break;
+				default:
+					write(1, &format[i], 1);
+					i++;
+					break;
 			}
 			i++;
 		}
