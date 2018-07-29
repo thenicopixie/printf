@@ -1,53 +1,4 @@
 #include "holberton.h"
-
-/**
-* _putchar - prints one character
-* @c: a character passed by some function
-*
-* Description: loop through and use this to print a whole thingy
-* Return: a character to the standard output.
-*/
-
-char _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
-* _strcpy - copies all the chars including null term
-* @dest: pointer to wehere you want the string copied to
-* @src: the source of the string you want to be copied
-*
-* Description: Copies the string over so we can do stuff
-* Return: Returns the copied over string
-*/
-
-char * _strcpy(char *dest, char *src)
-{
-	int i = 0;
-
-	while (dest[i] = src[i] != '\0')
-		i++;
-	return (dest);
-}	
-
-/**
-* _strlen - counts how many chars excluding null
-* @s: the string passed to us
-*
-* Description: Counts the number of chars until null char
-* Return: the string length
-*/
-
-int _strlen(char *s)
-{
-	int i = 0;
-	if (s)
-		while (s[i])
-			i++;
-	return (i);
-}
-
 /**
 * _printf - our own printf function
 * @format: A character string, composed of zero of more directives
@@ -59,7 +10,7 @@ int _strlen(char *s)
 int _printf(const char *format, ...)
 {
 	va_list santa;
-	int i = 0;
+	int i = 0, count = 0;
 	char *s;
 
 	va_start(santa, format);
@@ -73,10 +24,12 @@ int _printf(const char *format, ...)
 				case 'c':
 					_putchar(va_arg(santa, int));
 					i++;
+					count++;
 					break;
 				case 'i':
 					print_number(va_arg(santa, int));
 					i++;
+					count++;
 					break;
 				case 'f':
 					printf("%f", (float) va_arg(santa, double));
@@ -88,19 +41,23 @@ int _printf(const char *format, ...)
 						printf("(nil)");
 						break;
 					}
-					printf("%s", s);
+					write(1, s, va_arg(santa, double));
+					count += _strlen(s);
 					break;
 				case 'd':
 					print_number(va_arg(santa, int));
 					i++;
+					count++;
 					break;
 				case '%':
-					_putchar(va_arg(santa, int));
-					break;
-				case 'b':
+					write(1, &format[i], _strlen(s));
+					i++;
+					count++;
 					break;
 				default:
 					_putchar('%');
+					count++;
+					i++;
 					break;
 			}
 			i++;
@@ -113,4 +70,18 @@ int _printf(const char *format, ...)
 	}
 	va_end(santa);
 	_putchar('\n');
+	printf("%i\n", count);
+	return (0);
+}
+int main(void)
+{
+	printf("char: %c\n", "c");
+	_printf("char: %c\n", "c");
+        printf("string: %s\n", "string");
+        _printf("string: %s\n", "string");
+        printf("int: %i\n", 34, -34);
+        _printf("int: %i\n", 34, -34);
+        printf("decimal: %d %d\n", 22, 2+2);
+        _printf("decimal: %d %d\n", 22, 2+2);
+	return (0);
 }
