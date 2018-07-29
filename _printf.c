@@ -82,18 +82,18 @@ int main(void)
 {
 	char a = 'a';
 
-	printf("this is a char: %c\n", a);
-	_printf("this is a char: %c\n", a);
-	printf("this is a string: %s \n", "hello");
-        _printf("this is a string: %s \n", "hello");
-        printf("this is a int: %i\n", 34);
-        _printf("this is a int: %i\n", 34);
-	 printf("this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
-        _printf("this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
-	printf("whoops %% \n");
-	_printf("whoops %% \n");
-	printf("test one mod: %z \n");
-	_printf("test one mod: %z \n");
+	printf("printf - this is a char: %c\n", a);
+	_printf("our _printf - this is a char: %c\n", a);
+	printf("printf - this is a string: %s \n", "hello");
+        _printf("our _printf - this is a string: %s \n", "hello");
+        printf("printf - this is a int: %i\n", 34);
+        _printf("our _printf -this is a int: %i\n", 34);
+	 printf("printf - this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
+        _printf("our _printf - this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
+	printf("printf - check for 2 mods %% \n");
+	_printf("our _printf - check for 2 mods %% \n");
+	printf("printf - test one mod: %z \n");
+	_printf("our _printf - test one mod: %z \n");
 	
 	return (0);
 }
