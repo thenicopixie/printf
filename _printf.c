@@ -75,7 +75,7 @@ int _printf(const char *format, ...)
 					i++;
 					break;
 				case 'i':
-					_putchar(va_arg(santa, int));
+					print_number(va_arg(santa, int));
 					i++;
 					break;
 				case 'f':
