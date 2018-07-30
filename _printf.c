@@ -1,6 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
-#define BUFF_SIZE 1024
+//#define BUFF_SIZE 1024
 
 /**
 * _printf - our own printf function
@@ -14,11 +14,11 @@ int _printf(const char *format, ...)
 {
 	va_list argu;
 	int i = 0, count = 0;
-	char *s, *buffer;
+	char *s;
 
-	buffer = malloc(BUFF_SIZE);
-	if (!buffer)
-		return (-1);
+	//buffer = malloc(BUFF_SIZE);
+	//if (!buffer)
+	//	return (-1);
 /* need to check if % is given and next character isn't one of the interpreted cases */
 /* should give error */
 
@@ -38,9 +38,7 @@ int _printf(const char *format, ...)
 				case 'i':
 					print_number(va_arg(argu, int));
 					i++;
-/* need to fix count for ints */
 					count++;
-				//	count += print_number(va_arg(argu, int));
 					break;
 				case 'f':
 					printf("%f", (float) va_arg(argu, double));
@@ -60,7 +58,6 @@ int _printf(const char *format, ...)
 					print_number(va_arg(argu, int));
 					i++;
 					count++;
-				//	count += print_number(va_arg(argu, int));
 					break;
 				case '%':
 /* counts one too many times, should count only one % */
@@ -69,10 +66,10 @@ int _printf(const char *format, ...)
 					break;
 				case 'b':
 					break;
-				default:
+//				default:
 /* what do to if error occurs? */
-					printf("error\n");
-					return (-1);
+			//		printf("error\n");
+			//		return (-1);
 			}
 			i++;
 		}
@@ -87,4 +84,19 @@ int _printf(const char *format, ...)
 	_putchar('\n');
 	printf("number of characters printed: %i\n", count);
 	return (0);
+}
+int main(void)
+{
+	printf("string: %s\n", "hello");
+	_printf("string: %s\n", "hello");
+        printf("char: %c\n", 'h');
+        _printf("char: %c\n", 'h');
+        printf("int: %i\n", 45);
+        _printf("int: %i\n", 45);
+        printf("deci: %d\n", 33);
+        _printf("deci: %d\n", 33);
+        printf("%i + %i = %i\n", 3, 5, 3 + 5);
+        _printf("%i + %i = %i\n", 3, 5, 3 + 5);
+	printf("two mod: %%\n");
+	_printf("two mod: %%\n");
 }
