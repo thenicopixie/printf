@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	char *s;
 	int length = 0;
 
-	if (!format)
+	if (!format && format[i])
 		return (-1);
 	va_start(argu, format);
 	for (i = 0; format[i]; i++)
