@@ -6,7 +6,7 @@
 * @format: A character string, composed of zero of more directives
 *
 * Description: Writes a formatted string to the standard output
-* Return: an integer. The number of characters printed excluding the null byte
+*n Return: an integer. The number of characters printed excluding the null byte
 */
 
 int _printf(const char *format, ...)
@@ -42,16 +42,8 @@ int _printf(const char *format, ...)
 					count += _strlen(s);
 					break;
 				case 'i':
-<<<<<<< HEAD
-					count += print_number(va_arg(argu, int));
-					i++;
-					break;
-				case 'd':
-					count += print_number(va_arg(argu, int));;
-=======
 				case 'd':
 					count += print_number(va_arg(argu, int));
->>>>>>> e6b06086ed29dc550dcfb2cac6dc92baba16e4d0
 					i++;
 					break;
 				case '%':
@@ -71,4 +63,12 @@ int _printf(const char *format, ...)
 	}
 	va_end(argu);
 	return (count);
+}
+int main(void)
+{
+	printf("%");
+	printf("\n");
+	_printf("%");
+	_printf("\n");
+	return (0);
 }
