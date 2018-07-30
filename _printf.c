@@ -1,6 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
-
+#define BUFF_SIZE 1024
 
 /**
 * _printf - our own printf function
@@ -14,7 +14,13 @@ int _printf(const char *format, ...)
 {
 	va_list argu;
 	int i = 0, count = 0;
-	char *s;
+	char *s, *buffer;
+
+	buffer = malloc(BUFF_SIZE);
+	if (!buffer)
+		return (-1);
+/* need to check if % is given and next character isn't one of the interpreted cases */
+/* should give error */
 
 	va_start(argu, format);
 	while (format && format[i])
@@ -32,7 +38,9 @@ int _printf(const char *format, ...)
 				case 'i':
 					print_number(va_arg(argu, int));
 					i++;
+/* need to fix count for ints */
 					count++;
+				//	count += print_number(va_arg(argu, int));
 					break;
 				case 'f':
 					printf("%f", (float) va_arg(argu, double));
@@ -52,48 +60,31 @@ int _printf(const char *format, ...)
 					print_number(va_arg(argu, int));
 					i++;
 					count++;
+				//	count += print_number(va_arg(argu, int));
 					break;
 				case '%':
-					write(1, &format[i], 1);
+/* counts one too many times, should count only one % */
+					write(1, &format[i + 1], 1);
 					i++;
 					break;
 				case 'b':
 					break;
 				default:
-					write(1, &format[i], 1);
-					i++;
-					break;
+/* what do to if error occurs? */
+					printf("error\n");
+					return (-1);
 			}
 			i++;
 		}
 		else
 		{
 			_putchar(format[i]);
+			count++;
 			i++;
 		}
 	}
 	va_end(argu);
 	_putchar('\n');
 	printf("number of characters printed: %i\n", count);
-	return (0);
-}
-
-int main(void)
-{
-	char a = 'a';
-
-	printf("printf - this is a char: %c\n", a);
-	_printf("our _printf - this is a char: %c\n", a);
-	printf("printf - this is a string: %s \n", "hello");
-        _printf("our _printf - this is a string: %s \n", "hello");
-        printf("printf - this is a int: %i\n", 34);
-        _printf("our _printf -this is a int: %i\n", 34);
-	 printf("printf - this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
-        _printf("our _printf - this is a digit: %d, and so is this: %d\n", 455 + 1, -455);
-	printf("printf - check for 2 mods %% \n");
-	_printf("our _printf - check for 2 mods %% \n");
-	printf("printf - test one mod: %z \n");
-	_printf("our _printf - test one mod: %z \n");
-	
 	return (0);
 }
