@@ -14,7 +14,9 @@ int _printf(const char *format, ...)
 	va_list argu;
 	int i = 0, count = 0;
 	char *s;
+	char *nil;
 
+	nil = "(null)";
 	va_start(argu, format);
 	while (format && format[i])
 	{
@@ -37,7 +39,8 @@ int _printf(const char *format, ...)
 					s = va_arg(argu,  char *);
 					if (s == NULL)
 					{
-						printf("(nil)");
+						i++;
+						write(1, nil, _strlen(nil));
 						break;
 					}
 					write(1, s, _strlen(s));
@@ -55,19 +58,17 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					_putchar(format[i]);
+					i++;
 					break;
 			}
-			i++;
 		}
 		else
 		{
 			_putchar(format[i]);
 			count++;
-			i++;
 		}
+		i++;
 	}
 	va_end(argu);
-	_putchar('\n');
 	return (count);
 }
-
