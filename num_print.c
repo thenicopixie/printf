@@ -7,32 +7,25 @@
 */
 int print_number(int n)
 {
-	int i = 1, digs = n, ct = 0;
+	int dig = n;
+	int count = 0;
+	int places = 1000000000;
+	int x = 0;
 
-	while (digs / 10)
-	{
-		digs /= 10;
-		i *= 10;
-	}
 	if (n < 0)
 	{
 		_putchar('-');
-		ct++;
+		dig = -n;
+		count++;
 	}
-	while (i > 0)
+	while (places > dig)
+		places /= 10;
+	while (places > 0)
 	{
-		digs = n / i;
-		i /= 10;
-		if (digs < 0)
-		{
-			_putchar(digs % 10 * -1 + '0');
-			ct++;
-		}
-		else
-		{
-			_putchar(digs % 10 + '0');
-			ct++;
-		}
+		x = dig / places;
+		_putchar((x % 10) + '0');
+		places /= 10;
+		count++;
 	}
-	return (ct);
+	return (count);
 }

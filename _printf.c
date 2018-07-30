@@ -18,9 +18,9 @@ int _printf(const char *format, ...)
 
 	nil = "(null)";
 	va_start(argu, format);
-	while (format && format[i])
+	for (i = 0; format && format[i]; i++)
 	{
-		if (*(format + i) == '%' && (format[i + 1]))
+		if (format[i] == '%')
 		{
 			switch (format[i + 1])
 			{
@@ -41,13 +41,17 @@ int _printf(const char *format, ...)
 					i++;
 					count += _strlen(s);
 					break;
-
 				case 'i':
+<<<<<<< HEAD
 					count += print_number(va_arg(argu, int));
 					i++;
 					break;
 				case 'd':
 					count += print_number(va_arg(argu, int));;
+=======
+				case 'd':
+					count += print_number(va_arg(argu, int));
+>>>>>>> e6b06086ed29dc550dcfb2cac6dc92baba16e4d0
 					i++;
 					break;
 				case '%':
@@ -64,7 +68,6 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			count++;
 		}
-		i++;
 	}
 	va_end(argu);
 	return (count);

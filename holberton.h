@@ -10,7 +10,7 @@ char _putchar(char c);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 int _printf(const char *format, ...);
-void print_number(int n);
+int print_number(int n);
 int _strlen_recursion(char *s);
 
 #endif
