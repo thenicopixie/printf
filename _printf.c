@@ -30,11 +30,6 @@ int _printf(const char *format, ...)
 					i++;
 					count++;
 					break;
-				case 'i':
-					print_number(va_arg(argu, int));
-					i++;
-					count++;
-					break;
 				case 's':
 					s = va_arg(argu,  char *);
 					if (s == NULL)
@@ -47,6 +42,12 @@ int _printf(const char *format, ...)
 					i++;
 					count += _strlen(s);
 					break;
+
+				case 'i':
+					print_number(va_arg(argu, int));
+					i++;
+					count++;
+					break;
 				case 'd':
 					print_number(va_arg(argu, int));
 					i++;
@@ -57,9 +58,7 @@ int _printf(const char *format, ...)
 					i++;
 					break;
 				default:
-					_putchar(format[i]);
-					i++;
-					break;
+					exit(-1);
 			}
 		}
 		else
