@@ -16,15 +16,14 @@ int main(void)
     len2 = printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-
-    _printf("Length:[%d, %i]\n", 12345678, 46579);
-    printf("Length:[%d, %i]\n", 12345678, 46579);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-	  _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
+    _printf("Length:[%d, %i, %d, %d] OURS\n", len, len, 69, 69, 69);
+    printf("Length:[%d, %i, %d, %d] THEIRS\n", len2, len2, 69, 69);
+    _printf("Length:[%d, %i] OURS\n", 1 + 2, 46579);
+    printf("Length:[%d, %i] THEIRS\n", 1 + 2, 46579);
+    _printf("Negative:[%d] OURS\n", -762534);
+    printf("Negative:[%d] THEIRS\n", -762534);
+    _printf("Unsigned:[%u] OURS\n", ui);
+    printf("Unsigned:[%u] THEIRS\n", ui);
+    _printf("Address:[%p] OURS\n", addr);
+    printf("Address:[%p] THEIRS\n", addr);
 }
