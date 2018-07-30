@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	int car;
 
 	nil = "(null)";
-	if (!format)
+	if (!format && !format[i])
 		return (-1);
 	va_start(argu, format);
 	for (i = 0; format[i]; i++)
@@ -29,8 +29,6 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					car = va_arg(argu, int);
-					if (car <= 8 || car > 255)
-						return (-1);
 					_putchar(car);
 					i++;
 					count++;
@@ -70,12 +68,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(argu);
 	return (count);
-}
-int main(void)
-{
-	printf("%");
-	printf("\n");
-	_printf("%");
-	_printf("\n");
-	return (0);
 }
