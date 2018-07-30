@@ -15,17 +15,23 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0;
 	char *s;
 	char *nil;
+	int car;
 
 	nil = "(null)";
+	if (!format)
+		return (-1);
 	va_start(argu, format);
-	for (i = 0; format && format[i]; i++)
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
 			switch (format[i + 1])
 			{
 				case 'c':
-					_putchar(va_arg(argu, int));
+					car = va_arg(argu, int);
+					if (car <= 8 || car > 255)
+						return (-1);
+					_putchar(car);
 					i++;
 					count++;
 					break;
@@ -39,11 +45,12 @@ int _printf(const char *format, ...)
 					}
 					write(1, s, _strlen(s));
 					i++;
-					count += _strlen(s);
+					count += _strlen(s) + 1;
 					break;
 				case 'i':
 				case 'd':
-					count += print_number(va_arg(argu, int));
+					count += 
+					print_number(va_arg(argu, int));
 					i++;
 					break;
 				case '%':
