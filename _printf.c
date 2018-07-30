@@ -29,7 +29,8 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					car = va_arg(argu, int);
-					if (car <= 8 || car > 255)
+					if (car == NULL || car <= 8 ||
+					car > 255)
 						return (-1);
 					_putchar(car);
 					i++;
@@ -49,7 +50,7 @@ int _printf(const char *format, ...)
 					break;
 				case 'i':
 				case 'd':
-					count += 
+					count +=
 					print_number(va_arg(argu, int));
 					i++;
 					break;
