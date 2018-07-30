@@ -4,6 +4,9 @@
 /**
 * print_number - print integer
 * @n: integer to print
+*
+* Description: this is the advance problem from a nearlier project
+* Return: an int, the count.
 */
 int print_number(int n)
 {
