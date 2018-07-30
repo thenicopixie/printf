@@ -1,22 +1,32 @@
 #include "holberton.h"
 #include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
+
 /**
 * print_number - print integer
 * @n: integer to print
 */
-void print_number(int n)
+int print_number(int n)
 {
-	int dig;
+	int dig = n;
+	int count = 0;
+	int places = 1000000000;
+	int x = 0;
 
-	dig = n;
-	if (dig < 0 && dig / 10 == 0)
-		_putchar(45);
-	if (dig / 10)
-		print_number(dig / 10);
 	if (n < 0)
-		_putchar(((dig % 10) * -1) + '0');
-	else
-		_putchar((dig % 10) + '0');
+	{
+		_putchar('-');
+		dig = -n;
+		count++;
 	}
+	while (places > dig)
+		places /= 10;
+	while (places > 0)
+	{
+		x = dig / places;
+		_putchar((x % 10) + '0');
+		places /= 10;
+		count++;
+	}
+	return (count);
+}
