@@ -6,17 +6,12 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
-/**
- * _printf - print string to standard output
- * print_number - print digits from number
- * _putchar - printf character
- * _strlen - return string length
- * _strlen_recursion - return length of string
- */
+
 char _putchar(char c);
 int _strlen(char *s);
-char * _strcpy(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
 int _printf(const char *format, ...);
 void print_number(int n);
 int _strlen_recursion(char *s);
+
 #endif
