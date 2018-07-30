@@ -8,15 +8,15 @@
 */
 void print_number(int n)
 {
-        int dig;
+	int dig;
 
-        dig = n;
-        if (dig < 0 && dig / 10 == 0)
-                _putchar(45);
-        if (dig / 10)
-                print_number(dig / 10);
-        if (n < 0)
-                _putchar(((dig % 10) * -1) + '0');
-        else
-                _putchar((dig % 10) + '0');
-}
+	dig = n;
+	if (dig < 0 && dig / 10 == 0)
+		_putchar(45);
+	if (dig / 10)
+		print_number(dig / 10);
+	if (n < 0)
+		_putchar(((dig % 10) * -1) + '0');
+	else
+		_putchar((dig % 10) + '0');
+	}
