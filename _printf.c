@@ -14,10 +14,8 @@ int _printf(const char *format, ...)
 	va_list argu;
 	int i = 0, count = 0;
 	char *s;
-	char *nil;
-	int car;
+	int length = 0;
 
-	nil = "(null)";
 	if (!format)
 		return (-1);
 	va_start(argu, format);
@@ -28,10 +26,7 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 'c':
-					car = va_arg(argu, int);
-					if (car <= 8 || car > 255)
-						return (-1);
-					_putchar(car);
+					putchar(va_arg(argu, int));
 					i++;
 					count++;
 					break;
@@ -39,17 +34,18 @@ int _printf(const char *format, ...)
 					s = va_arg(argu,  char *);
 					if (s == NULL)
 					{
-						write(1, nil, _strlen(nil));
-						i++;
-						break;
+						return (-1);
 					}
-					write(1, s, _strlen(s));
+					length = _strlen(s);
+					if (!s[length])
+						return (-1);
+					write(1, s, _strlen(s)) + 1;
 					i++;
-					count += _strlen(s) + 1;
+					count += _strlen(s);
 					break;
 				case 'i':
 				case 'd':
-					count += 
+					count +=
 					print_number(va_arg(argu, int));
 					i++;
 					break;
@@ -60,6 +56,7 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					return (-1);
+					break;
 			}
 		}
 		else
