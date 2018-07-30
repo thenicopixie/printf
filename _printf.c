@@ -43,14 +43,12 @@ int _printf(const char *format, ...)
 					break;
 
 				case 'i':
-					print_number(va_arg(argu, int));
+					count += print_number(va_arg(argu, int));
 					i++;
-					count++;
 					break;
 				case 'd':
-					print_number(va_arg(argu, int));
+					count += print_number(va_arg(argu, int));;
 					i++;
-					count++;
 					break;
 				case '%':
 					_putchar('%');
