@@ -12,9 +12,8 @@
 int _printf(const char *format, ...)
 {
 	va_list argu;
-	int i = 0, count = 0;
+	int i = 0, count = 0, j;
 	char *s;
-	int length = 0;
 
 	if (!format && !format[i])
 		return (-1);
@@ -27,21 +26,17 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					_putchar(va_arg(argu, int));
-					i++;
 					count++;
+					i++;
 					break;
 				case 's':
-					s = va_arg(argu,  char *);
-					if (s == NULL)
+					s = va_arg(argu, char *);
+					for (j = 0; j < _strlen(s); j++)
 					{
-						return (-1);
+						_putchar(s[j]);
+						count++;
 					}
-					length = _strlen(s);
-					if (!s[length])
-						return (-1);
-					write(1, s, _strlen(s) + 1);
 					i++;
-					count += _strlen(s);
 					break;
 				case 'i':
 				case 'd':
