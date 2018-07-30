@@ -6,7 +6,7 @@
 * @format: A character string, composed of zero of more directives
 *
 * Description: Writes a formatted string to the standard output
-*n Return: an integer. The number of characters printed excluding the null byte
+* Return: an integer. The number of characters printed excluding the null byte
 */
 
 int _printf(const char *format, ...)
@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	char *s;
 	int length = 0;
 
-	if (!format && format[i])
+	if (!format && !format[i])
 		return (-1);
 	va_start(argu, format);
 	for (i = 0; format[i]; i++)
@@ -56,7 +56,6 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					return (-1);
-					break;
 			}
 		}
 		else
