@@ -19,6 +19,6 @@ int main(void)
     _printf("OURS String:[%%]\n");
     printf("THERIS String:[%%]\n");
 	_printf("OURS length:[%d] and [%d]\n", len, len2);
-	printf("THEIRS length:[%d] and [%d]", len, len2);
+	printf("THEIRS length:[%d] and [%d]\n", len, len2);
 	return (0);
 }
