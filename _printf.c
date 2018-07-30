@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 					length = _strlen(s);
 					if (!s[length])
 						return (-1);
-					write(1, s, _strlen(s)) + 1;
+					write(1, s, _strlen(s) + 1);
 					i++;
 					count += _strlen(s);
 					break;
