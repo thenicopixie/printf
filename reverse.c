@@ -1,10 +1,10 @@
 #include "holberton.h"
 
 /**
- * rev_str - reverse string
- * @s: string to reverse
- * Return: count of characers printed
- */
+* rev_str - reverse string
+* @s: string to reverse
+* Return: count of characers printed
+*/
 int  rev_str(char *s)
 {
 /* initialize a index counter */
