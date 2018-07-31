@@ -115,7 +115,6 @@ int _printf(const char *format, ...)
 		}
 		else/* F */
 			return (-1);
-		}
 	}
 	va_end(argu);
 	return (count);
