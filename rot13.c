@@ -6,7 +6,7 @@
  */
 int rot13(char *point)
 {
-	int i = 0, j, count = 0;;
+	int i = 0, j, count = 0;
 
 	char lett[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G',
 'H', 'I', 'J', 'K', 'L', 'M', 'N',
@@ -31,8 +31,7 @@ int rot13(char *point)
 		{
 			if (point[i] == lett[j])
 			{
-				point[i] = rot[j];
-				_putchar(point[i]);
+				_putchar(rot[j]);
 				count++;
 				break;
 			}
