@@ -4,15 +4,19 @@
 * _putstring - prints a string
 * @s: the pointer passed to this
 *
-* Description: putchar didnt work so i made this
+* Description: puts the string and returns the length.
 * Return: nothing it is void
 */
 
-void _putstring(char *s)
+int _putstring(char *s)
 {
+	int i = 0;
+
 	while (*s != '\0')
 	{
 		_putchar(*s);
 		s++;
+		i++;
 	}
+	return (i);
 }
