@@ -8,6 +8,17 @@
 *
 * Description: NO I WILL NOT USE STRUCTS LIKE EVERYONE ELSE
 * Return: the count total
+*
+* A: we passed that character after the %. use it as switch condition
+* B: if it is a char, we put char and plus 1 count
+* C: if it is a string we check if null, if so then we put null and plus 6
+*	we also put string if not null and count the stuff
+* D: if it is an i, do the same as a d. so we put i and let it cascade down
+*	if the number is 0 then we add 1 to count and put a 0
+*	else we just print the number
+* E: if it was a % then we just plus 1 and put the %
+* F: Binary. havent got it to work yet. it should.
+* G: the default is to just print the %letter and yea...
 */
 
 int no_struct(char c, int count, va_list argu)
@@ -16,21 +27,21 @@ int no_struct(char c, int count, va_list argu)
 	char *s;
 	int binary;
 
-	switch (c)
+	switch (c)/* A */
 	{
-		case 'c':
+		case 'c':/* B */
 			j = va_arg(argu, int);
 			_putchar(j);
 			count++;
 			break;
-		case 's':
+		case 's':/* C */
 			s = va_arg(argu, char *);
 			if (!s)
 			{
-				_putchar('(');	
-				_putchar('n');	
-				_putchar('u');	
-				_putchar('l');	
+				_putchar('(');
+				_putchar('n');
+				_putchar('u');
+				_putchar('l');
 				_putchar('l');
 				_putchar(')');
 				count += 6;
@@ -38,7 +49,7 @@ int no_struct(char c, int count, va_list argu)
 			else
 				count += _putstring(s);
 			break;
-		case 'i':
+		case 'i':/* D */
 		case 'd':
 			j = va_arg(argu, int);
 			if (!j)
@@ -49,15 +60,15 @@ int no_struct(char c, int count, va_list argu)
 			else
 				count += print_number(j);
 			break;
-		case '%':
+		case '%':/* E */
 			count++;
 			_putchar('%');
 			break;
-		case 'b':
+		case 'b':/* F */
 			binary = va_arg(argu, unsigned int);
 			count += dec_to_binary(binary);
 			break;
-		default:
+		default:/* G */
 			count += 2;
 			putchar('%');
 			putchar(c);
@@ -71,6 +82,12 @@ int no_struct(char c, int count, va_list argu)
 *
 * Description: Writes a formatted string to the standard output
 * Return: an integer. The number of characters printed excluding the null byte
+* A: if format is null then we return -1
+* B: as long as format of index is not null, we increment
+* C: if the index is not a percentage then we puts and count++
+* D: if it is a % or something else weird
+* E: if it is not a null then we scan that letter. pass it into helper func
+* F: its prob a null so we return -1
 */
 
 int _printf(const char *format, ...)
@@ -81,95 +98,27 @@ int _printf(const char *format, ...)
 
 	va_start(argu, format);
 
-	if (!format)
+	if (!format)/* A */
 		return (-1);
 
-	for (i = 0; format[i]; i++)
+	for (i = 0; format[i]; i++)/* B */
 	{
-		if (format[i] != '%')
+		if (format[i] != '%')/* C */
 		{
 			count++;
 			_putchar(format[i]);
 		}
-		else if (format[i + 1])
+		else/* D */
 		{
-			i++;
-			count = no_struct(format[i], count, argu);
+			if (format[i + 1])/* E */
+			{
+				i++;
+				count = no_struct(format[i], count, argu);
+			}
+			else/* F */
+				return (-1);
 		}
-		else
-			return (-1);
 	}
 	va_end(argu);
 	return (count);
 }
-
-
-/*
-	va_list argu;
-	int i = 0, ch;
-	int count = 0;
-	char *s;
-	int length = 0;
-	unsigned int binary = 0;
-
-	if (format == NULL)
-		return (-1);
-	va_start(argu, format);
-	for (i = 0; format[i]; i++)
-	{
-		if (format[i] == '%')
-		{
-			switch (format[i + 1])
-			{
-				case 'c':
-					ch = (va_arg(argu, int));
-					i++;
-					_putchar(ch);
-					count++;
-					break;
-				case 's':
-					s = va_arg(argu,  char *);
-					if (s == NULL)
-					{
-						s = "(null)";
-					}
-					length = _strlen(s);
-					if (!s[length])
-						return (-1);
-					_putstring(s);
-					i++;
-					count += _strlen(s);
-					break;
-				case 'i':
-				case 'd':
-					count +=
-					print_number(va_arg(argu, int));
-					i++;
-					break;
-				case '%':
-					_putchar('%');
-					i++;
-					count++;
-					break;
-				case 'b':
-					binary = va_arg(argu, unsigned int);
-					count += dec_to_binary(binary);
-					i++;
-				case ' ':
-					return (-1);
-				case '\0':
-					return (-1);
-				default:
-					return (-1);
-			}
-		}
-		else
-		{
-			_putchar(format[i]);
-			count++;
-		}
-	}
-	va_end(argu);
-	return (count);
-
-*/

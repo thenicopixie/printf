@@ -1,11 +1,14 @@
 #include "holberton.h"
 #include <unistd.h>
-#include <stdio.h>
+
 /**
 * print_number - print integer
 * @n: integer to print
 *
 * Description: this is the advance problem from a nearlier project
+*	this problem starts from the very first digit or index
+*	and then prints till the end is reached
+*	this code takes the max int and min int into account
 * Return: an int, the count.
 */
 int print_number(int n)

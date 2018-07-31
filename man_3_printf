@@ -2,7 +2,7 @@
 .TH man 1 "27 July 2018" "1.0" "_printf man page"
 .SH NAME
 .B _printf
-- format and print data 
+- format and print data
 .SH SYNOPSIS
 .B _printf
 .I FORMAT
@@ -22,7 +22,7 @@ FORMAT controls the output. Interpreted sequences:
 % - Each conversion specifier is prefixed by the
 .B %
 character
-.TP 
+.TP
 
 Conversion specifiers:
 
