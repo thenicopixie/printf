@@ -71,6 +71,10 @@ int no_struct(char c, int count, va_list argu)
 			s = va_arg(argu, char *);
 			count += rev_str(s);
 			break;
+		case 'R': /* H */
+			s = va_arg(argu, char *);
+			count += rot13(s);
+			break;
 		default:/* H */
 			count += 2;
 			_putchar('%');
