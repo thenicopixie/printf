@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <malloc.h>
 
 /**
 * dec_to_binary - converts a dec to binary

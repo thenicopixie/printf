@@ -2,7 +2,6 @@
 #define NICOBYN
 
 #include <stdio.h>
-#include <limits.h>
 #include <stdarg.h>
 #include <unistd.h>
 
