@@ -91,85 +91,17 @@ int _printf(const char *format, ...)
 			count++;
 			_putchar(format[i]);
 		}
-		else if (format[i + 1])
-		{
-			i++;
-			count = no_struct(format[i], count, argu);
-		}
 		else
-			return (-1);
+		{
+			if (format[i + 1])
+			{
+				i++;
+				count = no_struct(format[i], count, argu);
+			}
+			else
+				return (-1);
+		}
 	}
 	va_end(argu);
 	return (count);
 }
-
-
-/*
-	va_list argu;
-	int i = 0, ch;
-	int count = 0;
-	char *s;
-	int length = 0;
-	unsigned int binary = 0;
-
-	if (format == NULL)
-		return (-1);
-	va_start(argu, format);
-	for (i = 0; format[i]; i++)
-	{
-		if (format[i] == '%')
-		{
-			switch (format[i + 1])
-			{
-				case 'c':
-					ch = (va_arg(argu, int));
-					i++;
-					_putchar(ch);
-					count++;
-					break;
-				case 's':
-					s = va_arg(argu,  char *);
-					if (s == NULL)
-					{
-						s = "(null)";
-					}
-					length = _strlen(s);
-					if (!s[length])
-						return (-1);
-					_putstring(s);
-					i++;
-					count += _strlen(s);
-					break;
-				case 'i':
-				case 'd':
-					count +=
-					print_number(va_arg(argu, int));
-					i++;
-					break;
-				case '%':
-					_putchar('%');
-					i++;
-					count++;
-					break;
-				case 'b':
-					binary = va_arg(argu, unsigned int);
-					count += dec_to_binary(binary);
-					i++;
-				case ' ':
-					return (-1);
-				case '\0':
-					return (-1);
-				default:
-					return (-1);
-			}
-		}
-		else
-		{
-			_putchar(format[i]);
-			count++;
-		}
-	}
-	va_end(argu);
-	return (count);
-
-*/
