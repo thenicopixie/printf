@@ -12,5 +12,6 @@ int print_number(int n);
 int dec_to_binary(unsigned int n);
 int _putstring(char *s);
 int rev_str(char *s);
+int rot13(char *point);
 
 #endif
