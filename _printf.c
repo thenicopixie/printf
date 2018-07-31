@@ -31,19 +31,7 @@ int no_struct(char c, int count, va_list argu)
 	{
 		case 'c':/* B */
 			j = va_arg(argu, int);
-			if (!j)
-			{
-				_putchar('(');
-				_putchar('n');
-				_putchar('u');
-				_putchar('l');
-				_putchar('l');
-				_putchar(')');
-				count += 6;
-				break;
-			}
-			_putchar(j);
-			count++;
+			count += _putchar(j);
 			break;
 		case 's':/* C */
 			s = va_arg(argu, char *);
@@ -72,20 +60,16 @@ int no_struct(char c, int count, va_list argu)
 				count += print_number(j);
 			break;
 		case '%':/* E */
-			count++;
-			_putchar('%');
+			count += _putchar('%');
 			break;
 		case 'b':/* F */
 			binary = va_arg(argu, unsigned int);
 			count += dec_to_binary(binary);
 			break;
 		default:/* G */
-			return (-1);
-/*
-*			count += 2;
-*			putchar('%');
-*			putchar(c);
-*/
+			count += 2;
+			_putchar('%');
+			_putchar(c);
 	}
 	return (count);
 }
