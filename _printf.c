@@ -26,7 +26,6 @@ int no_struct(char c, int count, va_list argu)
 {
 	int j;
 	char *s;
-	int binary;
 
 	switch (c)/* A */
 	{
@@ -65,8 +64,7 @@ int no_struct(char c, int count, va_list argu)
 			break;
 		case 'b':/* F */
 			j = va_arg(argu, int);
-			binary = dec_to_binary(j);
-			count += print_number(binary);
+			count += _strlen(dec_to_binary(j));
 			break;
 		case 'r': /* G */
 			s = va_arg(argu, char *);
