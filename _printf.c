@@ -64,7 +64,7 @@ int no_struct(char c, int count, va_list argu)
 			break;
 		case 'b':/* F */
 			j = va_arg(argu, int);
-			count += _strlen(dec_to_binary(j));
+			count += dec_to_binary(j);
 			break;
 		case 'r': /* G */
 			s = va_arg(argu, char *);
