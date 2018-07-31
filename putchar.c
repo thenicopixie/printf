@@ -10,7 +10,5 @@
 
 int _putchar(char c)
 {
-	if (c)
-		return (write(1, &c, 1));
-	return (0);
+	return (write(1, &c, 1));
 }
