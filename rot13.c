@@ -30,7 +30,7 @@ int rot13(char *point)
 	}
 	while (point[i])
 	{
-		for (j = 0; j <= 52; j++)
+		for (j = 0; j < 52; j++)
 		{
 			if (point[i] == lett[j])
 			{
@@ -40,7 +40,7 @@ int rot13(char *point)
 				break;
 			}
 		}
-		if(!flag)
+		if (!flag)
 			_putchar(point[i]);
 		flag = 0;
 		i++;
