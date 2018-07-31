@@ -26,13 +26,11 @@ int rot13(char *point)
 'l', 'm'};
 	if (!point)
 	{
-		_putstring("(null)");
-		count += 6;
-		return (count);
+		point = "(null)";
 	}
 	while (point[i])
 	{
-		for (j = 0; j < 52; j++)
+		for (j = 0; j <= 52; j++)
 		{
 			if (point[i] == lett[j])
 			{
@@ -42,8 +40,9 @@ int rot13(char *point)
 				break;
 			}
 		}
-		if(flag == 0)
+		if(!flag)
 			_putchar(point[i]);
+		flag = 0;
 		i++;
 	}
 	return (count);
