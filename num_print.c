@@ -7,7 +7,7 @@
 *
 * Description: this is the advance problem from a nearlier project
 *	this problem starts from the very first digit or index
-8	and then prints till the end is reached
+*	and then prints till the end is reached
 *	this code takes the max int and min int into account
 * Return: an int, the count.
 */
