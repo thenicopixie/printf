@@ -10,19 +10,19 @@
 */
 
 
-char *dec_to_binary(int n)
+int dec_to_binary(int n)
 {
-	char *array;
 	int temp = n;
 	int count = 0;
 	int i;
+	int count2 = 0;
 
 	while (temp > 0)
 	{
 		temp /= 2;
 		count++;
+		count2++;
 	}
-	array = malloc(count);
 	for (count -= 1; count >= 0; count--)
 	{
 		i = n >> count;
@@ -32,6 +32,5 @@ char *dec_to_binary(int n)
 		else
 			_putchar('0');
 	}
-	return (array);
+	return (count2);
 }
-
