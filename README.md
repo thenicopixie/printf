@@ -1,7 +1,6 @@
 # printf
-### Description
-
-Create our own printf function. The function should produce an output according to a format. If conversion specifiers are passed in, use appropriate function.
+## Description
+- Create our own printf function. The function should produce an output according to a format. If conversion specifiers are passed in, use appropriate function.
 ---
 File | Task
 ---|---
