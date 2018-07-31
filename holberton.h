@@ -9,7 +9,8 @@
 int _putchar(char c);
 int _printf(const char *format, ...);
 int print_number(int n);
-int dec_to_binary(unsigned int n);
+int dec_to_binary(int n, char *s, int b);
 int _putstring(char *s);
+void _reverse(char *s);
 
 #endif
