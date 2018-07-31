@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
-* no_struct - a helpe function that is called when there is a %something
+* no_struct - a helper function that is called when there is a %something
 * @c: the character passed that was after %
 * @count: the number of count thus far. it will be incremented
 * @argu: the va_list that is passed to us so we can va_arg it
@@ -18,7 +18,8 @@
 *	else we just print the number
 * E: if it was a % then we just plus 1 and put the %
 * F: Binary. havent got it to work yet. it should.
-* G: the default is to just print the %letter and yea...
+* G: if it is r, call rev_str function to print string in reverse.
+* H: the default is to just print the %letter and yea...
 */
 
 int no_struct(char c, int count, va_list argu)
@@ -66,7 +67,11 @@ int no_struct(char c, int count, va_list argu)
 			binary = va_arg(argu, unsigned int);
 			count += dec_to_binary(binary);
 			break;
-		default:/* G */
+		case 'r': /* G */
+			s = va_arg(argu, char *);
+			count += rev_str(s);
+			break;
+		default:/* H */
 			count += 2;
 			_putchar('%');
 			_putchar(c);
