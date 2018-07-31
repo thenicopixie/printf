@@ -5,7 +5,7 @@
 * @s: the pointer passed to this
 *
 * Description: puts the string and returns the length.
-* Return: nothing it is void
+* Return: the string length
 */
 
 int _putstring(char *s)
