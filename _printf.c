@@ -12,31 +12,40 @@
 int _printf(const char *format, ...)
 {
 	va_list argu;
-	int i = 0, count = 0, j;
+	int i = 0;
+	int count = 0;
 	char *s;
+	int length = 0;
+	unsigned int binary = 0;
 
-	if (!format && !format[i])
+	if (format == NULL)
 		return (-1);
 	va_start(argu, format);
 	for (i = 0; format[i]; i++)
 	{
+		if (format == NULL)
+                	return (-1);
 		if (format[i] == '%')
 		{
 			switch (format[i + 1])
 			{
 				case 'c':
 					_putchar(va_arg(argu, int));
-					count++;
 					i++;
+					count++;
 					break;
 				case 's':
-					s = va_arg(argu, char *);
-					for (j = 0; j < _strlen(s); j++)
+					s = va_arg(argu,  char *);
+					if (s == NULL)
 					{
-						_putchar(s[j]);
-						count++;
+						return (-1);
 					}
+					length = _strlen(s);
+					if (!s[length])
+						return (-1);
+					_putstring(s);
 					i++;
+					count += _strlen(s);
 					break;
 				case 'i':
 				case 'd':
@@ -49,6 +58,10 @@ int _printf(const char *format, ...)
 					i++;
 					count++;
 					break;
+				case 'b':
+					binary = va_arg(argu, unsigned int);
+					count += dec_to_binary(binary);
+					i++;
 				default:
 					return (-1);
 			}
