@@ -38,9 +38,8 @@ int _printf(const char *format, ...)
 					if (s == NULL)
 					{
 						s = "(null)";
-						write(1, &s, 6);
+						write(1, &s, _strlen(s));
 						count += _strlen(s);
-						return (-1);
 					}
 					length = _strlen(s);
 					if (!s[length])
@@ -64,6 +63,10 @@ int _printf(const char *format, ...)
 					binary = va_arg(argu, unsigned int);
 					count += dec_to_binary(binary);
 					i++;
+				case ' ':
+					return (-1);
+				case '\0':
+					return (-1);
 				default:
 					return (-1);
 			}
