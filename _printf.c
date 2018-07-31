@@ -38,8 +38,6 @@ int _printf(const char *format, ...)
 					if (s == NULL)
 					{
 						s = "(null)";
-						write(1, &s, 6);
-						count += _strlen(s);
 					}
 					length = _strlen(s);
 					if (!s[length])
