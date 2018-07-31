@@ -12,7 +12,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argu;
-	int i = 0;
+	int i = 0, ch;
 	int count = 0;
 	char *s;
 	int length = 0;
@@ -28,8 +28,9 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 'c':
-					_putchar(va_arg(argu, int));
+					ch = (va_arg(argu, int));
 					i++;
+					_putchar(ch);
 					count++;
 					break;
 				case 's':
@@ -37,9 +38,8 @@ int _printf(const char *format, ...)
 					if (s == NULL)
 					{
 						s = "(null)";
-						write(1, &s, 6);
-						count += 6;
-						return (-1);
+						write(1, &s, _strlen(s));
+						count += _strlen(s);
 					}
 					length = _strlen(s);
 					if (!s[length])
@@ -63,6 +63,10 @@ int _printf(const char *format, ...)
 					binary = va_arg(argu, unsigned int);
 					count += dec_to_binary(binary);
 					i++;
+				case ' ':
+					return (-1);
+				case '\0':
+					return (-1);
 				default:
 					return (-1);
 			}
