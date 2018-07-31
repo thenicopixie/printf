@@ -1,26 +1,21 @@
 #include "holberton.h"
 
 /**
-* reverse - the helper function to the binary part of itob
-*
+* rev_str - reverse string
+* @s: string to reverse
+* Return: count of characers printed
 */
-
-
-int reverse(char *s)
+int  rev_str(char *s)
 {
-	int i = 0;
-	int j = 0;
-	char c;
+/* initialize a index counter */
+	int i, j = 0;
 
 	while (s[j])
 		j++;
-	for (i = 0; i < j; i++, j--)//swaps
+/* start i at length of string, decrement till 0 */
+	for (i = j - 1; i >= 0; i--)
 	{
-		c = s[i];
-		s[i] = s[j];
-		s[j] = c;
+		_putchar(s[i]);
 	}
-	for (i = 0; s[i]; i++)//print now it is in correct order
-		_putchar(s[i] - '0');
-	return (i);
+	return (j);
 }
