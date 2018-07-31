@@ -15,11 +15,13 @@ int dec_to_binary(int n)
 	int temp = n;
 	int count = 0;
 	int i;
+	int count2 = 0;
 
 	while (temp > 0)
 	{
 		temp /= 2;
 		count++;
+		count2++;
 	}
 	for (count -= 1; count >= 0; count--)
 	{
@@ -30,5 +32,5 @@ int dec_to_binary(int n)
 		else
 			_putchar('0');
 	}
-	return (count);
+	return (count2);
 }
