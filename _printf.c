@@ -23,8 +23,6 @@ int _printf(const char *format, ...)
 	va_start(argu, format);
 	for (i = 0; format[i]; i++)
 	{
-		if (format == NULL)
-                	return (-1);
 		if (format[i] == '%')
 		{
 			switch (format[i + 1])
@@ -38,7 +36,10 @@ int _printf(const char *format, ...)
 					s = va_arg(argu,  char *);
 					if (s == NULL)
 					{
-						return (-1);
+						s = "(null)";
+						write(1, &s, 6);
+						count += 6;
+						break;
 					}
 					length = _strlen(s);
 					if (!s[length])
