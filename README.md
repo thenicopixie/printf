@@ -1,5 +1,6 @@
 # printf
-## Description
+### Description
+
 Create our own printf function. The function should produce an output according to a format. If conversion specifiers are passed in, use appropriate function.
 ---
 File | Task
@@ -13,5 +14,5 @@ dec_to_binary.c | convert unsigned int to binary, print. Return values printed
 reverse.c | print string in reverse, return characters printed
 rot13 | print string in rot13, return characters printed
 man_3_printf | manual for our printf program
-### Author
+### Authors
 **Bryan Leung, Nicole Swanson**
