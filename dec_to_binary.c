@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <malloc.h>
 
 /**
 * dec_to_binary - converts a dec to binary
@@ -9,11 +10,28 @@
 */
 
 
-int dec_to_binary(int n)
+char *dec_to_binary(int n)
 {
-	if (n == 0)
-		return (0);
-	else
-		return (n % 2 + 10 * dec_to_binary(n / 2));
+	char *array;
+	int temp = n;
+	int count = 0;
+	int i;
+
+	while (temp > 0)
+	{
+		temp /= 2;
+		count++;
+	}
+	array = malloc(count);
+	for (count -= 1; count >= 0; count--)
+	{
+		i = n >> count;
+
+		if (i & 1)
+			_putchar('1');
+		else
+			_putchar('0');
+	}
+	return (array);
 }
 
