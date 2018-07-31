@@ -26,4 +26,6 @@ int main(void)
     printf("Unsigned:[%u] THEIRS\n", ui);
     _printf("Address:[%p] OURS\n", addr);
     printf("Address:[%p] THEIRS\n", addr);
+	_printf("\n11001 [%b] OURS\n", 25);
+	_printf("\n111 [%b] OURS\n", 7);
 }
