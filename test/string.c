@@ -15,7 +15,7 @@ int main(void)
     _printf("OURS function Character:[%c]\n", 'H');
     printf("THEIRS standard Character:[%c]\n", 'H');
 	
-    _printf("OURS function Character:[%a]\n", "TEST");
+    _printf("OURS function Character:[%aia]aa\n", "TEST");
     printf("THEIRS standard Character:[%s]\n", "TEST");
 
     _printf("OURS function Character EMPTY STRING:[%s]\n", "");
