@@ -85,7 +85,7 @@ int no_struct(char c, int count, va_list argu)
 * A: if format is null then we return -1
 * B: as long as format of index is not null, we increment
 * C: if the index is not a percentage then we puts and count++
-* D: if it is a % or something else weird
+* D: ERASED THE DEEEE
 * E: if it is not a null then we scan that letter. pass it into helper func
 * F: its prob a null so we return -1
 */
@@ -108,15 +108,13 @@ int _printf(const char *format, ...)
 			count++;
 			_putchar(format[i]);
 		}
-		else/* D */
+		else if (format[i + 1])/* E */
 		{
-			if (format[i + 1])/* E */
-			{
-				i++;
-				count = no_struct(format[i], count, argu);
-			}
-			else/* F */
-				return (-1);
+			i++;
+			count = no_struct(format[i], count, argu);
+		}
+		else/* F */
+			return (-1);
 		}
 	}
 	va_end(argu);
