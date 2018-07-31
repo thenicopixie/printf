@@ -13,6 +13,6 @@ int _printf(const char *format, ...);
 int print_number(int n);
 int _strlen_recursion(char *s);
 int dec_to_binary(unsigned int n);
-void _putstring(char *s);
+int _putstring(char *s);
 
 #endif
