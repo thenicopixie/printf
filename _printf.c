@@ -1,4 +1,15 @@
 #include "holberton.h"
+/**
+*
+*/
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i])
+		i++;
+	return (i);
+}
 
 /**
 * no_struct - a helpe function that is called when there is a %something
@@ -25,7 +36,7 @@ int no_struct(char c, int count, va_list argu)
 {
 	int j;
 	char *s;
-	char binary[1024];
+	int binary;
 
 	switch (c)/* A */
 	{
@@ -64,7 +75,7 @@ int no_struct(char c, int count, va_list argu)
 			break;
 		case 'b':/* F */
 			j = va_arg(argu, int);
-			count += dec_to_binary(j, binary, 10);
+			binary = dec_to_binary(j);
 			break;
 		default:/* G */
 			count += 2;
