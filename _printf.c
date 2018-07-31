@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 					s = va_arg(argu,  char *);
 					if (s == NULL)
 					{
-						s = "(null)"
+						s = "(null)";
 						write(1, &s, 6);
 						count += 6;
 						return (-1);
