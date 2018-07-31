@@ -25,13 +25,6 @@ int rot13(char *point)
 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 'l', 'm'};
 
-	if (!point[i])
-	{
-		_putstring("(null)");
-		count += 6;
-		return (count);
-	}
-
 	while (point[i])
 	{
 		for (j = 0; j < 52; j++)
